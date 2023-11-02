@@ -52,6 +52,28 @@ paths:
                 items:
                   $ref: "#/components/schemas/Book"
   /authors:
+    get:
+      tags:
+        - "Authors"
+      summary: Get all authors
+      description: Retrieve a list of all authors or filter by name.
+      operationId: getAuthors
+      parameters:
+        - in: query
+          name: authorName
+          description: Filter authors by name
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: List of authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
 components:
   schemas:
     Book:
