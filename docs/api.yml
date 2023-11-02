@@ -8,6 +8,8 @@ servers:
 paths:
   /books:
     get:
+      tags:
+        - "Books"
       summary: Get all books
       description: The returned books are ordered by updated datetime.
       operationId: getBooks
@@ -29,6 +31,8 @@ paths:
                 items:
                   $ref: "#/components/schemas/Book"
     put:
+      tags:
+        - "Books"
       summary: Create or update a list of books
       operationId: crupdateBooks
       requestBody:
@@ -48,7 +52,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/Book"
   /authors:
-  #TODO2: complete GET (can be filtered by name) - PUT - DELETE
 components:
   schemas:
     Book:
@@ -59,7 +62,6 @@ components:
         bookName:
           type: string
         author:
-          #TODO1: set it as a component with properties : id, name, sex (M or F)
           type: string
         pageNumbers:
           type: integer
