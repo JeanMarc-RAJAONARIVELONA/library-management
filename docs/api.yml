@@ -128,24 +128,8 @@ components:
   schemas:
     Book:
       type: object
-      properties:
-        id:
-          type: string
-        bookName:
-          type: string
-        author:
-          type: string
-        pageNumbers:
-          type: integer
-        topic:
-          type: string
-          enum:
-            - ROMANCE
-            - COMEDY
-            - OTHER
-        releaseDate:
-          type: string
-          format: date
+      allOf:
+        - $ref: "#/components/schemas/CrupdateBook"
     Author:
       type: object
       properties:
