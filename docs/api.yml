@@ -121,6 +121,14 @@ paths:
           required: true
           schema:
             type: string
+        - in: query
+          name: authorIds
+          description: List of author IDs to delete
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         204:
           description: Author deleted successfully
