@@ -35,6 +35,23 @@ paths:
                 type: string
                 format: date
                 description: End of date range
+        - in: query
+          name: page
+          description: |
+            The page number.
+            Used when paginating the books
+          schema:
+            type: integer
+            default: 1
+          required: false
+        - in: query
+          name: pageSize
+          description: |
+            The count of all books in each page
+          schema:
+            type: integer
+            default: 50
+          required: false
       responses:
         200:
           description: The list of filtered books
