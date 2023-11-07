@@ -87,6 +87,27 @@ paths:
       responses:
         200:
           description: Author attached to the Book successfully
+  /books/authors:
+    put:
+      tags:
+        - "Books"
+      summary: Attach Authors to Books
+      operationId: attachAuthorsToBooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  bookId:
+                    type: string
+                  authorId:
+                    type: string
+      responses:
+        200:
+          description: Authors attached to Books successfully
   /authors:
     get:
       tags:
