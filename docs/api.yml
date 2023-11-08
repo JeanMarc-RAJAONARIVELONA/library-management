@@ -77,7 +77,38 @@ paths:
                         type: integer
                       message:
                         type: string
-
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
     put:
       tags:
         - "Books"
@@ -99,6 +130,52 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Book"
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
   /books/{bookId}/authors/{authorId}:
     put:
       tags:
@@ -121,6 +198,52 @@ paths:
       responses:
         200:
           description: Author attached to the Book successfully
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
   /books/authors:
     put:
       tags:
@@ -137,6 +260,52 @@ paths:
       responses:
         200:
           description: Authors attached to Books successfully
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
   /authors:
     get:
       tags:
@@ -163,6 +332,52 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Author"
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
     put:
       tags:
         - "Authors"
@@ -184,6 +399,52 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Author"
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
     delete:
       tags:
         - "Authors"
@@ -199,6 +460,36 @@ paths:
       responses:
         204:
           description: Author deleted successfully
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        description: The status code.
+                      message:
+                        type: string
+                        description: The status message
 components:
   schemas:
     Book:
