@@ -285,16 +285,30 @@ paths:
       summary: Import books from Excel or JSON
       operationId: importBooks
       requestBody:
-        description: Excel or JSON file containing book information
         required: true
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                file:
+                excelFile:
                   type: string
                   format: binary
+                  description: Excel file containing book data
+                jsonFile:
+                  type: string
+                  format: binary
+                  description: JSON file containing book data
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/ImportBook"
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: # Type MIME pour les fichiers Excel
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/ImportBook"
       responses:
         200:
           description: List of imported books
@@ -304,6 +318,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Book"
+
   /authors:
     get:
       tags:
@@ -563,6 +578,26 @@ components:
         bookId:
           type: string
         authorId:
+          type: string
+    ImportBook:
+      type: object
+      properties:
+        bookName:
+          type: string
+        author:
+          type: string
+        pageNumbers:
+          type: integer
+        topic:
+          type: string
+          enum:
+            - ROMANCE
+            - COMEDY
+            - OTHER
+        releaseDate:
+          type: string
+          format: date
+        idAuthor:
           type: string
   responses:
     CommonResponse:
