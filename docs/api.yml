@@ -63,6 +63,21 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Book"
+        400:
+          description: bad bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+
     put:
       tags:
         - "Books"
