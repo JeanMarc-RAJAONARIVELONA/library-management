@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Library API
-  version: 1.2.0
+  version: 1.3.0
   description: STD22043
 servers:
   - url: https://library.com
@@ -26,15 +26,17 @@ paths:
           required: false
           schema:
             type: object
-            properties:
-              from:
-                type: string
-                format: date
-                description: Start of date range
-              to:
-                type: string
-                format: date
-                description: End of date range
+        - $ref: "#/components/parameters/QueryPagination"
+        - $ref: "#/components/parameters/PathPagination"
+          properties:
+            from:
+              type: string
+              format: date
+              description: Start of date range
+            to:
+              type: string
+              format: date
+              description: End of date range
         - in: query
           name: page
           description: |
@@ -134,20 +136,9 @@ paths:
           required: false
           schema:
             type: string
-        - in: query
-          name: page
-          description: Page number for pagination
-          required: false
-          schema:
-            type: integer
-            default: 1
-        - in: query
-          name: pageSize
-          description: Number of items per page
-          required: false
-          schema:
-            type: integer
-            default: 50
+        - $ref: "#/components/parameters/QueryPagination"
+        - $ref: "#/components/parameters/PathPagination"
+
       responses:
         200:
           description: List of authors
@@ -239,3 +230,19 @@ components:
           type: string
         authorId:
           type: string
+  parameters:
+    QueryPagination:
+      in: query
+      name: queryPagination
+      description: "Page number for pagination"
+      required: false
+      schema:
+        type: integer
+        default: 1
+    PathPagination:
+      name: pathPagination
+      in: query
+      description: Page number for pagination
+      required: true
+      schema:
+        type: integer
