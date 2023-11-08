@@ -479,6 +479,7 @@ paths:
       summary: Import authors from Excel or JSON
       operationId: importAuthors
       requestBody:
+        required: true
         content:
           multipart/form-data:
             schema:
@@ -492,6 +493,16 @@ paths:
                   type: string
                   format: binary
                   description: JSON file containing author data
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Author"
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: # Type MIME pour les fichiers Excel
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Author"
       responses:
         200:
           description: List of imported authors
@@ -507,6 +518,12 @@ components:
       type: object
       allOf:
         - $ref: "#/components/schemas/CrupdateBook"
+        - type: object
+          properties:
+            file_type:
+              enum:
+                - Excel
+                - JSON
       properties:
         author:
           $ref: "#/components/schemas/Author"
