@@ -60,55 +60,45 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message.
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
     put:
       tags:
         - "Books"
@@ -127,55 +117,45 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Book"
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message.
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
   /books/{bookId}/authors/{authorId}:
     put:
       tags:
@@ -198,52 +178,48 @@ paths:
       responses:
         200:
           description: Author attached to the Book successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message.
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
   /books/authors:
     put:
       tags:
@@ -260,52 +236,74 @@ paths:
       responses:
         200:
           description: Authors attached to Books successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message.
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
+  /books/import:
+    post:
+      tags:
+        - "Books"
+      summary: Import books from Excel or JSON
+      operationId: importBooks
+      requestBody:
+        description: Excel or JSON file containing book information
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: List of imported books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
   /authors:
     get:
       tags:
@@ -329,55 +327,45 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message.
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
     put:
       tags:
         - "Authors"
@@ -387,64 +375,57 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: "#/components/schemas/Author"
+              allOf:
+                - $ref: "#/components/responses/CommonResponse"
+                - type: object
+                  properties:
+                    body:
+                      $ref: "#/components/schemas/Author"
       responses:
         200:
           description: List of created or updated authors
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Author"
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message.
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
     delete:
       tags:
         - "Authors"
@@ -460,36 +441,66 @@ paths:
       responses:
         204:
           description: Author deleted successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
+                    properties:
+                      body:
+                        $ref: "#/components/schemas/Author"
         400:
           description: bad bad request
           content:
             application/json:
               schema:
-                type: array
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
+                      body:
+                        $ref: "#/components/schemas/Author"
         500:
           description: Internal Server Error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: object
+                allOf:
+                  - $ref: "#/components/responses/CommonResponse"
+                  - type: object
                     properties:
-                      code:
-                        type: integer
-                        description: The status code.
-                      message:
-                        type: string
-                        description: The status message
+                      body:
+                        $ref: "#/components/schemas/Author"
+  /authors/import:
+    post:
+      tags:
+        - "Authors"
+      summary: Import authors from Excel or JSON
+      operationId: importAuthors
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                excelFile:
+                  type: string
+                  format: binary
+                  description: Excel file containing author data
+                jsonFile:
+                  type: string
+                  format: binary
+                  description: JSON file containing author data
+      responses:
+        200:
+          description: List of imported authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
 components:
   schemas:
     Book:
@@ -536,6 +547,23 @@ components:
           type: string
         authorId:
           type: string
+  responses:
+    CommonResponse:
+      description: A generic answer for all answers
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+              body:
+                type: object
   parameters:
     QueryPagination:
       in: query
