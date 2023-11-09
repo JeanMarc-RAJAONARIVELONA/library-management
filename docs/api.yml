@@ -591,6 +591,134 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/responses/CommonResponse"
+  /actions/borrow:
+    get:
+      tags:
+        - "Actions"
+      summary: Get a list of all borrowed books
+      operationId: getBorrowedBooks
+      responses:
+        200:
+          description: List of all borrowed books retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BorrowAction"
+    post:
+      tags:
+        - "Actions"
+      summary: Borrow a book
+      operationId: borrowBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BorrowAction"
+      responses:
+        201:
+          description: Book borrowed successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BorrowAction"
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+  /actions/borrow/{actionId}:
+    delete:
+      tags:
+        - "Actions"
+      summary: Delete an action record by ID
+      operationId: deleteActionRecord
+      parameters:
+        - in: path
+          name: actionId
+          description: ID of the action record to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Action record deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+        404:
+          description: Action record not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+  /actions/return:
+    get:
+      tags:
+        - "Actions"
+      summary: Get a list of all returned books
+      operationId: getReturnedBooks
+      responses:
+        200:
+          description: List of all returned books retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReturnAction"
+    post:
+      tags:
+        - "Actions"
+      summary: Return a book
+      operationId: returnBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReturnAction"
+      responses:
+        201:
+          description: Book returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReturnAction"
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+  /actions/return/{actionId}:
+    delete:
+      tags:
+        - "Actions"
+      summary: Delete a return action record by ID
+      operationId: deleteReturnActionRecord
+      parameters:
+        - in: path
+          name: actionId
+          description: ID of the return action record to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Return action record deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+        404:
+          description: Return action record not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
 components:
   schemas:
     Book:
@@ -672,6 +800,26 @@ components:
           type: string
         reference:
           type: string
+    BorrowAction:
+      type: object
+      properties:
+        bookId:
+          type: string
+        visitorId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+    ReturnAction:
+      type: object
+      properties:
+        bookId:
+          type: string
+        visitorId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
   responses:
     CommonResponse:
       description: A generic answer for all answers
