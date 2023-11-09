@@ -527,6 +527,70 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Author"
+  /visitors:
+    get:
+      tags:
+        - "Visitors"
+      summary: Get a list of all visitors
+      operationId: getAllVisitors
+      responses:
+        200:
+          description: List of all visitors retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Visitor"
+    post:
+      tags:
+        - "Visitors"
+      summary: Create a new visitor
+      operationId: createVisitor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Visitor"
+      responses:
+        201:
+          description: Visitor created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Visitor"
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+  /visitors/{visitorId}:
+    delete:
+      tags:
+        - "Visitors"
+      summary: Delete visitor by ID
+      operationId: deleteVisitorById
+      parameters:
+        - in: path
+          name: visitorId
+          description: ID of the visitor to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Visitor deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
+        404:
+          description: Visitor not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/CommonResponse"
 components:
   schemas:
     Book:
@@ -598,6 +662,15 @@ components:
           type: string
           format: date
         idAuthor:
+          type: string
+    Visitor:
+      type: object
+      properties:
+        IdAuthor:
+          type: integer
+        name:
+          type: string
+        reference:
           type: string
   responses:
     CommonResponse:
